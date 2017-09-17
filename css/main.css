@@ -1,27 +1,62 @@
+@font-face {
+    font-family: 'Courier Prime';
+    src: url("../fonts/courierprime.woff2") format("woff2"), url("../fonts/courierprime.woff") format("woff"), url("../fonts/courierprime.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Courier Prime Bold';
+  src: url("../fonts/courierprimebold.woff2") format("woff2"), url("../fonts/courierprimebold.woff") format("woff"), url("../fonts/courierprimebold.ttf") format("truetype");
+}
+
 body {
-    font-family: 'Courier Prime', monospace;
+    font-family: 'Courier Prime', 'Courier New', 'Courier', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: normal;
-    color: #000;
-    font-size: 14px;
+    color: #fff;
+    background: #222;
+    font-size: 15px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 55px 65px;
-    max-width: 1280px;
     margin: 0 auto;
     position: relative;
 }
 
 body ::-moz-selection {
     color: #fff;
-    background: #000;
+    background: #0000ff;
 }
 
 body ::selection {
     color: #fff;
+    background: #0000ff;
+}
+
+body .clearfix::after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+body strong {
+    font-family: 'Courier Prime Bold', 'Courier New', 'Courier', monospace;
+}
+
+body header {
+    width: 100%;
+    height: 70px;
+    z-index: 10;
     background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+body header img {
+    width: 240px;
+    padding: 22px 0 0 24px;
 }
 
 body ul, body li {
@@ -30,88 +65,65 @@ body ul, body li {
     list-style: none;
 }
 
+body nav {
+    position: absolute;
+    right: 24px;
+    top: 28px;
+}
+
+body nav ul li {
+    display: inline-block;
+    margin: 0px 0px 0px 12px;
+}
+
+body nav ul li a:after {
+    top: 6px;
+}
+
 body p {
-    line-height: 1.5;
-    letter-spacing: -0.02rem;
-}
-
-body p.caption {
-    line-height: 1.1;
-    padding: 12px 0 16px 0;
-    margin: 0 0 16px 0;
-}
-
-body p.caption .right {
-    float: right;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
 }
 
 body a {
+    color: #fff;
     text-decoration: none;
-    color: #000;
-    padding: 0 0 2px 0;
-    border-bottom: 1px solid #000;
+    padding: 0 0 10px 0;
+    display: inline;
+    position: relative;
+    cursor: pointer;
 }
 
-body a.no-border {
-    border-bottom: none;
+body a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    height: 1px;
+    background: #fff;
+    transition: transform 0.25s ease;
+    transform: scaleX(0);
+    transform-origin: right center;
 }
 
 body a:hover {
     cursor: pointer;
-    border-bottom: 1px solid #000;
 }
 
-body a:hover.no-border {
-    border-bottom: none;
+body a:hover:after {
+    transform: scaleX(1);
+    transform-origin: left center;
 }
 
-body a:hover.no-border span {
-    border-bottom: 1px solid #000;
+body a.selected:after {
+    transform: scaleX(1);
+    transform-origin: left center;
 }
 
-body h1, body h2 {
-    letter-spacing: -0.02rem;
-    font-weight: bold;
-    padding: 20px 0 60px 0;
-    margin: 0;
-    line-height: 1.3;
-}
-
-body h1 {
-    font-size: 46px;
-    letter-spacing: -0.1rem;
-    padding: 0 0 20px 0;
-}
-
-body h1 img {
-    width: 320px;
-    margin: 18px auto;
-    display: inline;
-}
-
-body h2 {
-    padding: 0;
-    font-size: 24px;
-    margin: 16px 0 12px;
-}
-
-body .info-btn {
-    position: absolute;
-    top: 84px;
-    padding: 0 0 1px 0;
-}
-
-body .info-btn.right {
-    right: 65px;
-}
-
-body .info-btn.left {
-    left: 65px;
-}
-
-body .info-btn:hover {
-    cursor: pointer;
-    border-bottom: 1px solid #000;
+body a.no-border:after {
+    transform: scaleX(0);
+    transform-origin: left center;
 }
 
 body .iframe-wrapper {
@@ -119,6 +131,7 @@ body .iframe-wrapper {
     padding-bottom: 54%;
     padding-top: 25px;
     height: 0;
+    margin: 0 auto 30px;
 }
 
 body .iframe-wrapper iframe {
@@ -130,59 +143,89 @@ body .iframe-wrapper iframe {
 }
 
 body img {
-    width: 100%;
     padding: 0;
     display: block;
 }
 
-body #information {
-    margin: 30px 0 0 0;
+body .title {
+    margin: 18px 0 8px;
+    font-size: 16px;
 }
 
-body #information.home {
-    margin: 50px 0 0 0;
+body .project-imgs {
+    margin: 70px auto 0;
+    text-align: center;
+    max-width: 860px;
+}
+
+body .project-imgs img {
+    max-width: 860px;
+    max-height: 600px;
+    margin: 0 auto 30px;
 }
 
 body .grid {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0;
+}
+
+body .grid:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body .grid.black {
+    background: #000;
 }
 
 body .grid.top {
-    padding: 0 0 65px;
-}
-
-body .grid.section {
-    padding: 20px 0 60px;
-}
-
-body .grid.info {
-    margin: 30px 0 0 0;
-    padding: 70px 0 60px;
-    border-top: 1px solid #000;
-}
-
-body .grid.project {
-    margin: 0 0 40px;
-    padding: 0;
+    margin: 70px 0 0 0;
 }
 
 body .grid .col {
-    vertical-align: top;
-    display: inline-block;
-    margin: 0 60px 0 0;
+    width: 100%;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body .grid .col.three {
-    width: calc(33.3% - 32px);
-    margin: 0 40px 0 0;
+    width: calc(100% / 3);
 }
 
 body .grid .col.two {
-    width: calc(50% - 25px);
-    margin: 0 40px 0 0;
+    width: calc(50%);
+}
+
+body .grid .col.skew {
+    width: calc(70% - 15px);
+}
+
+body .grid .col.skew-spacer {
+    width: calc(30% - 15px);
+}
+
+body .grid .col.text {
+    padding: 90px 24px 45px;
+}
+
+body .grid .col.contact {
+    margin: 0 0 30px 0;
+}
+
+body .grid .col.bottom {
+    background: #000;
+}
+
+body .grid .col.bottom.right {
+    padding: 45px 24px 30px 12px;
+}
+
+body .grid .col.bottom.left {
+    padding: 45px 12px 30px 24px;
 }
 
 body .grid .col.details p {
@@ -197,86 +240,96 @@ body .grid .col.details p:last-child {
     margin: 0 0 16px 0;
 }
 
-body .grid .col:last-child {
-    margin: 0;
-}
-
 body .grid .col.cont {
     margin-top: 26px;
 }
 
-@media screen and (max-width: 800px) {
+body .grid .col img {
+    width: 100%;
+}
+
+body footer {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #000;
+    width: 100%;
+    padding: 24px;
+    line-height: 1.2;
+}
+
+body footer span {
+    float: right;
+}
+
+@media screen and (max-width: 840px) {
     body {
-        padding: 46px 24px 50px;
+        font-size: 16px;
     }
 
-    body img {
-        padding: 0 0 20px 0;
+    body .project-imgs {
+        margin: 70px auto 0;
+        text-align: center;
+        max-width: 100%;
     }
 
-    body img.grid-img {
-        width: 100%;
-    }
-
-    body img.grid-img:nth-child(odd) {
-        padding: 0 0 20px 0;
-    }
-
-    body h1 {
-        font-size: 36px;
-        padding: 0;
-    }
-
-    body h1 img {
-        margin: 14px 0 14px;
-    }
-
-    body h2 {
-        padding: 0 0 4px 0;
-    }
-
-    body .info-btn {
-        display: none;
+    body .project-imgs img {
+        max-width: 100%;
+        max-height: 460px;
     }
 
     body .grid .col.two, body .grid .col.three {
         width: 100%;
         display: inline-block;
-        margin: 0;
     }
 
-    body .grid .col.two.cont, body .grid .col.three.cont {
-        margin-top: -36px;
+    body .grid .col.text {
+        padding: 90px 24px 45px;
     }
 
-    body .grid.section {
-        padding: 0 0 70px;
+    body .grid .col.text:nth-child(even) {
+        padding: 0px 24px 45px;
     }
 
-    body .grid.project .col {
-        margin: 0;
+    body .grid .col.contact {
+        margin: 0 0 10px 0;
+    }
+
+    body .grid .col.bottom {
+        background: #000;
+    }
+
+    body .grid .col.bottom.right {
+        padding: 0px 24px 30px;
+    }
+
+    body .grid .col.bottom.left {
+        padding: 45px 24px 30px;
+    }
+
+    body footer {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background: #000;
+        width: 100%;
+        padding: 24px;
+    }
+
+    body footer span {
+        display: block;
+        float: none;
+        margin: 10px 0 0 0;
     }
 }
 
-@media screen and (max-width: 600px) {
-    body h1 {
-        font-size: 36px;
-        padding: 0;
-    }
-}
-
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 360px) {
     body {
-        padding: 46px 20px 50px;
         font-size: 14px;
     }
 
-    body h1 {
-        font-size: 36px;
-        padding: 0;
-    }
-
-    body h1 img {
-        width: 100%;
+    body header img {
+        width: 200px;
+        padding: 24px 0 0 24px;
     }
 }
